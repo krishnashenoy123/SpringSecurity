@@ -21,11 +21,12 @@ public class UserService {
     @Autowired
     private JWTService jwtService;
 
-    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(10);
+    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
 
     public Users save(Users user){
         user.setPassword(encoder.encode(user.getPassword()));
-        return repo.save(user);
+        repo.save(user);
+        return user;
     }
 
     public String verify(Users user) {

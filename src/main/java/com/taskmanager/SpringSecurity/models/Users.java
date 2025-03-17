@@ -2,17 +2,18 @@ package com.taskmanager.SpringSecurity.models;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
-
 @Entity
-//@Table(name = "users") // optional
 public class Users {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String username;
     private String password;
 
+    // No-arg constructor required by Hibernate
+    public Users() {
+    }
+
+    // Parameterized constructor
     public Users(int id, String username, String password) {
         this.id = id;
         this.username = username;
